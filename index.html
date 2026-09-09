@@ -6,181 +6,184 @@
 <title>Dania Irfan — Data Analytics Portfolio</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --paper:#F0EEE6;
-    --card:#FFFFFF;
-    --ink:#1C231F;
-    --ink-soft:#565F58;
-    --line:#D8D3C4;
-    --accent:#2F6E52;
-    --accent-tint:rgba(47,110,82,0.10);
-    --accent-warm:#B4863A;
+    --bg1:#EDEBE0; --bg2:#E7ECDF; --bg3:#E1EEE6;
+    --ink:#1C231F; --ink-soft:#565F58;
+    --accent:#2F6E52; --accent-2:#B4863A;
+    --pill:#1C231F; --card:#ffffff; --line:#D8D3C4;
   }
   *{box-sizing:border-box;}
   html{scroll-behavior:smooth;}
   body{
     margin:0;
-    background:var(--paper);
+    background:linear-gradient(135deg,var(--bg1),var(--bg2) 50%,var(--bg3));
+    background-attachment:fixed;
     color:var(--ink);
     font-family:'Inter',sans-serif;
-    font-size:16px;
     line-height:1.6;
   }
-  h1,h2,h3{
-    font-family:'Fraunces',serif;
-    font-weight:500;
-    margin:0;
-    line-height:1.1;
+  h1,h2,h3{font-family:'Space Grotesk',sans-serif;margin:0;line-height:1.1;}
+  a{color:inherit;text-decoration:none;}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 28px;}
+
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease, transform .6s ease;}
+  .reveal.in-view{opacity:1;transform:translateY(0);}
+
+  header{position:sticky;top:0;z-index:20;padding:20px 0;}
+  .navbar{
+    max-width:900px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;
+    background:rgba(255,255,255,0.7);backdrop-filter:blur(10px);
+    border-radius:40px;padding:10px 22px;box-shadow:0 4px 24px rgba(20,21,26,0.06);
   }
-  a{color:var(--ink);text-decoration:none;}
-  .wrap{max-width:960px;margin:0 auto;padding:0 28px;}
+  .logo{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.1rem;}
+  nav{display:flex;gap:4px;background:rgba(20,21,26,0.04);border-radius:30px;padding:4px;}
+  nav a{font-size:0.88rem;font-weight:500;color:var(--ink-soft);padding:8px 16px;border-radius:24px;transition:.2s;}
+  nav a:hover{color:var(--ink);}
+  nav a.active{background:#fff;color:var(--ink);box-shadow:0 2px 8px rgba(20,21,26,0.08);}
+  .icons{display:flex;gap:14px;}
+  .icons a{width:34px;height:34px;border-radius:50%;background:rgba(20,21,26,0.05);display:flex;align-items:center;justify-content:center;font-size:0.85rem;}
+  .icons a:hover{background:var(--ink);color:#fff;}
+  @media(max-width:760px){nav{display:none;}}
 
-  header{padding:22px 0;border-bottom:1px solid var(--line);position:sticky;top:0;background:var(--paper);z-index:10;}
-  header .wrap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;}
-  .brand{display:flex;align-items:center;gap:10px;}
-  .mark{width:30px;height:30px;border-radius:50%;background:var(--ink);color:var(--paper);
-    display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-size:0.9rem;flex-shrink:0;}
-  .brand-name{font-family:'Fraunces',serif;font-size:1.1rem;font-weight:600;}
-  nav a{margin-left:22px;font-size:0.92rem;color:var(--ink-soft);}
-  nav a:first-child{margin-left:0;}
-  nav a:hover{color:var(--accent);}
-
-  .hero{padding:60px 0;border-bottom:1px solid var(--line);}
-  .hero-top{display:grid;grid-template-columns:auto 1fr;gap:32px;align-items:center;}
-  .avatar{
-    width:120px;height:120px;border-radius:50%;flex-shrink:0;
-    object-fit:cover;border:3px solid var(--card);box-shadow:0 0 0 1px var(--line);
-    opacity:0;animation:rise 0.6s ease-out forwards;
+  .hero{padding:60px 0 90px;}
+  .hero-grid{display:grid;grid-template-columns:1.2fr 0.8fr;gap:50px;align-items:center;}
+  .status{
+    display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.75);
+    border-radius:30px;padding:9px 18px;font-size:0.86rem;color:var(--ink-soft);margin-bottom:26px;
   }
-  .hero-copy{opacity:0;animation:rise 0.6s ease-out 0.1s forwards;}
-  @keyframes rise{from{opacity:0;transform:translateY(12px);}to{opacity:1;transform:translateY(0);}}
-  @media (prefers-reduced-motion: reduce){.hero-copy,.avatar{animation:none;opacity:1;}}
-  .badge{
-    display:inline-flex;align-items:center;gap:7px;font-size:0.85rem;color:var(--ink-soft);
-    margin-bottom:12px;
+  .status .dot{width:8px;height:8px;border-radius:50%;background:var(--accent-2);}
+  .hero h1{font-size:clamp(2.6rem,6vw,4.2rem);font-weight:700;letter-spacing:-0.02em;}
+  .role{color:var(--accent);font-weight:600;letter-spacing:0.08em;font-size:0.95rem;margin:14px 0 22px;text-transform:uppercase;}
+  .tagline{font-size:1.35rem;font-weight:600;max-width:34ch;line-height:1.4;}
+  .tagline .hl{color:var(--accent);}
+  .tagline .hl2{color:var(--accent-2);}
+  .skill-pills{display:flex;gap:10px;flex-wrap:wrap;margin:28px 0;}
+  .skill-pills span{background:var(--pill);color:#fff;font-size:0.85rem;font-weight:600;padding:9px 18px;border-radius:24px;}
+  .meta-line{color:var(--ink-soft);font-size:0.95rem;margin-bottom:30px;}
+  .hero-actions{display:flex;align-items:center;gap:24px;flex-wrap:wrap;}
+  .cta{
+    display:inline-flex;align-items:center;gap:8px;background:var(--ink);color:#fff;
+    padding:14px 24px;border-radius:30px;font-weight:600;font-size:0.95rem;transition:.2s;
   }
-  .badge .dot{width:7px;height:7px;border-radius:50%;background:var(--accent);}
-  .hero h1{font-size:clamp(1.9rem,4.2vw,2.7rem);}
-  .hero .role{color:var(--accent);font-size:1.05rem;margin-top:6px;}
-  .hero p{max-width:56ch;color:var(--ink-soft);margin-top:16px;font-size:1.02rem;}
-  .actions{margin-top:24px;display:flex;gap:14px;flex-wrap:wrap;}
-  .btn{display:inline-block;padding:10px 18px;border:1px solid var(--ink);border-radius:2px;font-size:0.9rem;}
-  .btn.primary{background:var(--ink);color:var(--paper);}
-  .btn:hover{border-color:var(--accent);color:var(--accent);}
-  .btn.primary:hover{background:var(--accent);border-color:var(--accent);color:var(--paper);}
+  .cta:hover{background:var(--accent);}
+  .location{display:flex;align-items:center;gap:6px;color:var(--ink-soft);font-size:0.9rem;}
 
-  @media(max-width:640px){.hero-top{grid-template-columns:1fr;text-align:center;}
-    .hero-top .avatar{margin:0 auto;}}
+  .photo-frame{
+    background:linear-gradient(160deg,var(--accent),#4a9172);
+    border-radius:30px;padding:14px;box-shadow:0 20px 50px rgba(47,110,82,0.25);
+  }
+  .photo-frame img{width:100%;aspect-ratio:1/1.05;object-fit:cover;border-radius:20px;display:block;}
+  @media(max-width:760px){.hero-grid{grid-template-columns:1fr;}.photo-frame{max-width:320px;margin:0 auto;}}
 
-  section{padding:56px 0;border-bottom:1px solid var(--line);}
-  section:last-of-type{border-bottom:none;}
-  .section-head{margin-bottom:34px;}
-  .section-head .eyebrow{font-size:0.88rem;color:var(--accent);margin-bottom:6px;}
-  .section-head h2{font-size:1.6rem;}
+  section{padding:70px 0;}
+  .section-tag{color:var(--accent);font-weight:600;font-size:0.85rem;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:10px;}
+  .section-head h2{font-size:2rem;margin-bottom:36px;}
 
-  /* About */
-  .about-grid{display:grid;grid-template-columns:1.1fr 0.9fr;gap:40px;}
-  .about-grid p{color:var(--ink-soft);font-size:1rem;max-width:52ch;}
+  .card{
+    background:rgba(255,255,255,0.72);backdrop-filter:blur(6px);
+    border-radius:20px;padding:26px 28px;border:1px solid rgba(255,255,255,0.6);
+  }
+
+  .about-grid{display:grid;grid-template-columns:1.1fr 0.9fr;gap:30px;}
+  .about-grid p{color:var(--ink-soft);font-size:1.02rem;}
   .about-cards{display:flex;flex-direction:column;gap:14px;}
-  .about-cards .card{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:16px 18px;}
-  .about-cards h4{font-family:'Fraunces',serif;font-size:1rem;font-weight:500;margin-bottom:4px;}
-  .about-cards p{margin:0;font-size:0.92rem;max-width:none;}
-  @media(max-width:700px){.about-grid{grid-template-columns:1fr;}}
+  .about-cards .card h4{font-size:1rem;margin-bottom:6px;}
+  .about-cards .card p{margin:0;font-size:0.92rem;color:var(--ink-soft);}
+  @media(max-width:760px){.about-grid{grid-template-columns:1fr;}}
 
-  /* Timeline (Experience / Education) */
-  .timeline{position:relative;padding-left:26px;border-left:2px solid var(--line);}
-  .titem{position:relative;padding-bottom:34px;}
+  .timeline{position:relative;padding-left:28px;border-left:2px solid rgba(47,110,82,0.25);}
+  .titem{position:relative;padding-bottom:30px;}
   .titem:last-child{padding-bottom:0;}
-  .titem::before{
-    content:'';position:absolute;left:-33px;top:4px;width:12px;height:12px;
-    border-radius:50%;background:var(--accent);border:3px solid var(--paper);
-  }
-  .titem .when{font-size:0.85rem;color:var(--accent-warm);margin-bottom:4px;}
-  .titem h3{font-size:1.1rem;font-weight:500;}
-  .titem .org{font-size:0.95rem;color:var(--ink-soft);margin-top:2px;}
+  .titem::before{content:'';position:absolute;left:-35px;top:4px;width:12px;height:12px;border-radius:50%;background:var(--accent);border:3px solid #EDEBE0;}
+  .titem .when{color:var(--accent);font-size:0.85rem;font-weight:600;margin-bottom:4px;}
+  .titem h3{font-size:1.15rem;}
+  .titem .org{color:var(--ink-soft);font-size:0.95rem;margin-top:2px;}
   .titem ul{margin:10px 0 0;padding-left:18px;color:var(--ink-soft);font-size:0.93rem;}
-  .titem li{margin-bottom:4px;}
 
-  /* Skills */
-  .skills-groups{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:24px;}
-  .skills-groups .card{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:20px;}
-  .skills-groups h4{font-family:'Fraunces',serif;font-size:1.02rem;font-weight:500;margin:0 0 12px;
-    padding-bottom:10px;border-bottom:2px solid var(--accent-warm);display:inline-block;}
+  .skills-groups{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;}
+  .skills-groups h4{font-size:1rem;margin-bottom:14px;}
   .tags{display:flex;flex-wrap:wrap;gap:8px;}
-  .tags span{font-size:0.83rem;color:var(--ink);background:var(--paper);border:1px solid var(--line);
-    padding:5px 11px;border-radius:20px;}
+  .tags span{font-size:0.82rem;background:rgba(47,110,82,0.08);color:var(--accent);padding:6px 13px;border-radius:20px;font-weight:600;}
 
-  /* Projects */
-  .proj-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;}
-  .pcard{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:22px;
-    border-top:3px solid var(--accent);transition:transform 0.15s, box-shadow 0.15s;}
-  .pcard:hover{transform:translateY(-3px);box-shadow:0 8px 20px rgba(28,35,31,0.08);}
-  .pcard h3{font-size:1.08rem;font-weight:500;margin-bottom:8px;}
+  .proj-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:20px;}
+  .pcard{transition:transform .2s;}
+  .pcard:hover{transform:translateY(-4px);}
+  .pcard h3{font-size:1.08rem;margin-bottom:8px;}
   .pcard p{color:var(--ink-soft);font-size:0.92rem;margin:0 0 14px;}
-  .pcard .tags span{font-size:0.75rem;padding:4px 9px;}
-  .pcard a.link{display:inline-block;margin-top:14px;font-size:0.88rem;color:var(--accent);}
-  .pcard a.link:hover{text-decoration:underline;}
+  .pcard .tags span{font-size:0.75rem;padding:4px 10px;}
+  .pcard a.link{display:inline-block;margin-top:14px;font-size:0.88rem;color:var(--accent);font-weight:600;}
 
-  /* Contact */
-  .contact-box{background:var(--ink);color:var(--paper);border-radius:8px;padding:44px 40px;text-align:center;}
-  .contact-box h2{color:var(--paper);font-size:1.8rem;}
-  .contact-box p{color:#C9CFC7;max-width:44ch;margin:14px auto 26px;}
-  .contact-box .btn{border-color:var(--paper);color:var(--paper);}
-  .contact-box .btn.primary{background:var(--paper);color:var(--ink);}
-  .contact-box .btn:hover{border-color:var(--accent-warm);color:var(--accent-warm);}
-  .contact-box .btn.primary:hover{background:var(--accent-warm);color:var(--ink);}
+  .contact-card{
+    background:linear-gradient(135deg,var(--ink),#2a2c3a);color:#fff;
+    border-radius:28px;padding:54px 44px;text-align:center;
+  }
+  .contact-card h2{color:#fff;font-size:2rem;}
+  .contact-card p{color:#b8bac4;max-width:44ch;margin:14px auto 30px;}
+  .contact-card .cta{background:#fff;color:var(--ink);}
+  .contact-card .cta:hover{background:var(--accent);color:#fff;}
+  .contact-actions{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;}
+  .ghost-btn{border:1px solid rgba(255,255,255,0.3);padding:14px 24px;border-radius:30px;font-weight:600;font-size:0.95rem;}
+  .ghost-btn:hover{border-color:#fff;}
 
-  footer{padding:30px 0 50px;}
-  footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;color:var(--ink-soft);font-size:0.85rem;}
+  footer{padding:30px 0 50px;text-align:center;color:var(--ink-soft);font-size:0.85rem;}
 </style>
 </head>
 <body>
 
 <header>
-  <div class="wrap">
-    <div class="brand">
-      <div class="mark">DI</div>
-      <div class="brand-name">Dania Irfan</div>
-    </div>
+  <div class="wrap navbar">
+    <div class="logo">DI.</div>
     <nav>
-      <a href="#about">About</a>
+      <a href="#about" class="active">About</a>
       <a href="#experience">Experience</a>
       <a href="#skills">Skills</a>
       <a href="#projects">Projects</a>
       <a href="#contact">Contact</a>
     </nav>
+    <div class="icons">
+      <a href="https://github.com/daniairfan1812" target="_blank" rel="noopener" title="GitHub">GH</a>
+      <a href="https://www.linkedin.com/in/dania-irfan-b4668833a" target="_blank" rel="noopener" title="LinkedIn">in</a>
+      <a href="mailto:daniairfan1812@gmail.com" title="Email">@</a>
+    </div>
   </div>
 </header>
 
-<section class="hero">
-  <div class="wrap hero-top">
-    <div class="avatar-wrap"><img class="avatar" src="profile.jpg" alt="Dania Irfan"></div>
-    <div class="hero-copy">
-      <div class="badge"><span class="dot"></span>Open to internships &amp; fintech analytics roles</div>
+<section id="about" class="hero">
+  <div class="wrap hero-grid">
+    <div class="reveal">
+      <div class="status"><span class="dot"></span>Open to internships &amp; fintech analytics roles</div>
       <h1>Dania Irfan</h1>
-      <div class="role">Business Data Analytics student, moving toward fintech</div>
-      <p>I work with SQL, Python, and Excel to turn raw datasets into clear,
-      usable insight — with a growing focus on financial analysis and fintech.</p>
-      <div class="actions">
-        <a class="btn primary" href="#projects">See my projects</a>
-        <a class="btn" href="https://github.com/daniairfan1812" target="_blank" rel="noopener">GitHub</a>
-        <a class="btn" href="https://www.linkedin.com/in/dania-irfan-b4668833a" target="_blank" rel="noopener">LinkedIn</a>
+      <div class="role">Business Data Analytics Student</div>
+      <p class="tagline">I take <span class="hl">raw, messy data</span> and turn it into
+      <span class="hl2">insight someone can actually act on</span>.</p>
+      <div class="skill-pills">
+        <span>SQL</span><span>Python</span><span>Excel</span>
       </div>
+      <div class="meta-line">BS Business Data Analytics @ COMSATS University Islamabad · CGPA 3.38/4.00</div>
+      <div class="hero-actions">
+        <a class="cta" href="#contact">Get in touch →</a>
+      </div>
+    </div>
+    <div class="photo-frame reveal">
+      <img src="profile.jpg" alt="Dania Irfan">
     </div>
   </div>
 </section>
 
-<section id="about">
+<section id="about-details">
   <div class="wrap">
-    <div class="section-head"><div class="eyebrow">About</div><h2>Data-driven, with a finance lens.</h2></div>
+    <div class="section-head reveal">
+      <div class="section-tag">About</div>
+      <h2>Data-driven, with a finance lens.</h2>
+    </div>
     <div class="about-grid">
-      <p>I'm a Business Data Analytics student at COMSATS University Islamabad,
+      <p class="reveal">I'm a Business Data Analytics student at COMSATS University Islamabad,
       building hands-on experience across analytics, machine learning, and finance —
       from SQL business questions to churn analysis to research on academic
       performance. I'm currently narrowing that toward fintech.</p>
-      <div class="about-cards">
+      <div class="about-cards reveal">
         <div class="card"><h4>Education</h4><p>Business Data Analytics undergrad, building a strong analytical foundation.</p></div>
         <div class="card"><h4>Focus</h4><p>Financial analysis, data analytics, and applied machine learning.</p></div>
         <div class="card"><h4>Approach</h4><p>Turn raw, messy data into a clear, defensible recommendation.</p></div>
@@ -191,8 +194,11 @@
 
 <section id="experience">
   <div class="wrap">
-    <div class="section-head"><div class="eyebrow">Experience</div><h2>Professional timeline.</h2></div>
-    <div class="timeline">
+    <div class="section-head reveal">
+      <div class="section-tag">Experience</div>
+      <h2>Professional timeline.</h2>
+    </div>
+    <div class="timeline reveal">
       <div class="titem">
         <div class="when">July 2026 — Present</div>
         <h3>AI-Powered Data Analysis Intern</h3>
@@ -208,8 +214,11 @@
 
 <section id="education">
   <div class="wrap">
-    <div class="section-head"><div class="eyebrow">Education</div><h2>Academic background.</h2></div>
-    <div class="timeline">
+    <div class="section-head reveal">
+      <div class="section-tag">Education</div>
+      <h2>Academic background.</h2>
+    </div>
+    <div class="timeline reveal">
       <div class="titem">
         <div class="when">2024 — Present</div>
         <h3>Business Data Analytics</h3>
@@ -221,23 +230,26 @@
 
 <section id="skills">
   <div class="wrap">
-    <div class="section-head"><div class="eyebrow">Skills</div><h2>Toolkit across analytics and finance.</h2></div>
+    <div class="section-head reveal">
+      <div class="section-tag">Skills</div>
+      <h2>Toolkit across analytics and finance.</h2>
+    </div>
     <div class="skills-groups">
-      <div class="card">
+      <div class="card reveal">
         <h4>Analysis</h4>
         <div class="tags">
           <span>Excel</span><span>SQL</span><span>pgAdmin</span>
           <span>Python</span><span>pandas</span><span>matplotlib</span>
         </div>
       </div>
-      <div class="card">
+      <div class="card reveal">
         <h4>Finance</h4>
         <div class="tags">
           <span>CAPM &amp; beta</span><span>NPV / IRR / MIRR</span>
           <span>Capital budgeting</span><span>Stock research</span>
         </div>
       </div>
-      <div class="card">
+      <div class="card reveal">
         <h4>Other</h4>
         <div class="tags">
           <span>Marketing management</span><span>Machine learning</span>
@@ -250,33 +262,36 @@
 
 <section id="projects">
   <div class="wrap">
-    <div class="section-head"><div class="eyebrow">Projects</div><h2>Selected work.</h2></div>
+    <div class="section-head reveal">
+      <div class="section-tag">Projects</div>
+      <h2>Selected work.</h2>
+    </div>
     <div class="proj-grid">
-      <div class="pcard">
+      <div class="card pcard reveal">
         <h3>Bank Customer Churn Analysis</h3>
         <p>An end-to-end analysis of a bank churn dataset, identifying the patterns behind why customers leave.</p>
         <div class="tags"><span>Excel</span></div>
         <a class="link" href="https://github.com/daniairfan1812" target="_blank" rel="noopener">View on GitHub →</a>
       </div>
-      <div class="pcard">
+      <div class="card pcard reveal">
         <h3>Netflix SQL Business Insights</h3>
         <p>Business questions answered against a Netflix content dataset using SQL in pgAdmin.</p>
         <div class="tags"><span>SQL</span><span>pgAdmin</span></div>
         <a class="link" href="https://github.com/daniairfan1812" target="_blank" rel="noopener">View on GitHub →</a>
       </div>
-      <div class="pcard">
+      <div class="card pcard reveal">
         <h3>Email / SMS Spam Detection</h3>
         <p>A TF-IDF based classifier comparing multiple models to flag spam messages.</p>
         <div class="tags"><span>Python</span><span>scikit-learn</span></div>
         <a class="link" href="https://github.com/daniairfan1812" target="_blank" rel="noopener">View on GitHub →</a>
       </div>
-      <div class="pcard">
+      <div class="card pcard reveal">
         <h3>Cohort Participation Analysis</h3>
         <p>A report on learner engagement and opportunity participation across cohorts.</p>
         <div class="tags"><span>Excel</span></div>
         <a class="link" href="https://github.com/daniairfan1812" target="_blank" rel="noopener">View on GitHub →</a>
       </div>
-      <div class="pcard">
+      <div class="card pcard reveal">
         <h3>EI &amp; Academic Achievement Research</h3>
         <p>Examining Emotional Intelligence, Creative Thinking, Motivation, and Gender as predictors of academic achievement.</p>
         <div class="tags"><span>Python</span><span>Jupyter</span></div>
@@ -288,24 +303,48 @@
 
 <section id="contact">
   <div class="wrap">
-    <div class="contact-box">
+    <div class="contact-card reveal">
       <h2>Let's talk about a role.</h2>
       <p>Open to internships and analyst roles in fintech and data. Reach out any time.</p>
-      <div class="actions" style="justify-content:center;">
-        <a class="btn primary" href="mailto:daniairfan1812@gmail.com">Email me</a>
-        <a class="btn" href="https://github.com/daniairfan1812" target="_blank" rel="noopener">GitHub</a>
-        <a class="btn" href="https://www.linkedin.com/in/dania-irfan-b4668833a" target="_blank" rel="noopener">LinkedIn</a>
+      <div class="contact-actions">
+        <a class="cta" href="mailto:daniairfan1812@gmail.com">Email me</a>
+        <a class="ghost-btn" href="https://github.com/daniairfan1812" target="_blank" rel="noopener">GitHub</a>
+        <a class="ghost-btn" href="https://www.linkedin.com/in/dania-irfan-b4668833a" target="_blank" rel="noopener">LinkedIn</a>
       </div>
     </div>
   </div>
 </section>
 
-<footer>
-  <div class="wrap">
-    <div>© 2026 Dania Irfan. All rights reserved.</div>
-    <div>github.com/daniairfan1812 · linkedin.com/in/dania-irfan-b4668833a</div>
-  </div>
-</footer>
+<footer>© 2026 Dania Irfan. All rights reserved.</footer>
+
+<script>
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        e.target.classList.add('in-view');
+        io.unobserve(e.target);
+      }
+    });
+  },{threshold:0.15});
+  document.querySelectorAll('.reveal').forEach((el,i)=>{
+    el.style.transitionDelay = (i%4)*0.08 + 's';
+    io.observe(el);
+  });
+
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('nav a');
+  const navObserver = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        const id = entry.target.getAttribute('id');
+        navLinks.forEach(a=>a.classList.remove('active'));
+        const match = document.querySelector('nav a[href="#'+id+'"]');
+        if(match) match.classList.add('active');
+      }
+    });
+  },{rootMargin:'-40% 0px -50% 0px'});
+  sections.forEach(s=>navObserver.observe(s));
+</script>
 
 </body>
 </html>
